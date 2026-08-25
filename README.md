@@ -37,7 +37,7 @@ Information about a web project created using Python, Flask, machine learning, d
 
 ## Authors
 Colabolators in the project: 
-* [Andrew](#)
+* [Andrew](https://github.com/Andrewdepe)
 * [Taofik](#)
 * [Taiabur](https://github.com/taiaburbd)
 
