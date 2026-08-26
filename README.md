@@ -11,18 +11,8 @@ Self-Taught Medical Imaging (MI), Web base learning, quiz, and medical image sto
 ![ST-MI Mainpage](https://github.com/taiaburbd/Self_Taught_Mi/blob/main/idea/ref/Screenshot%202024-01-03%20at%2012.43.31.png)
 
 
-## Installation step
 
-* git clone https://github.com/taiaburbd/Self_Taught_Mi.git
-
-installation with virtual environment 
-* Install: python/python3 -m venv venv
-* Active virtual env: source .venv/bin/activate
-* pip install -r requirements.txt   
-* flask run
-
-
-## Technologies
+## Technical
 Information about a web project created using Python, Flask, machine learning, deep learning, and various frontend technologies. Here's a breakdown of the components and libraries :
 
 
