@@ -1,6 +1,5 @@
-# Self_Taught_Mi
-e-Health Lab
-Level Up: Self-Taught Medical Imaging (mi)
+# Level Up: Self-Taught Medical Imaging (MI)
+
 
 Self-Taught Medical Imaging (MI), Web base learning, quiz, and medical image store and visualized system. 
 
