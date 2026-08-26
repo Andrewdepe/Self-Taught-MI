@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <video autoplay muted loop id="bg-video">
+            <source src="{{ url_for('static',filename='assets/images/main-video.mp4') }}" type="video/mp4" />
+        </video>
+  
+        <div class="video-overlay header-text">
+            <div class="caption">
+                <h6>Study harder, get Smarter</h6>
+                <h2>easy with our <em>Mi</em></h2>
+                <div class="main-button scroll-to-section">
+                    <a href="#features">Become a learner</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+    <!-- ***** Features Item Start ***** -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>Medical imaging 
+                            <em>techolonogy</em></h2>
+                        <img src="{{ url_for('static',filename='assets/mi-images/CT_Scan_General_Illustration.jpg') }}" alt="CT scan" width="256">
+                        <p>Medical imaging technology encompasses a wide range of techniques and equipment used to create visual representations of the internal structures and functions of the human body for diagnostic and therapeutic purposes. These images help healthcare professionals in diagnosing and treating various medical conditions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        {% if categories %}
+                            {% set catlen = categories | length %}
+                        {% else %}
+                            {% set catlen = 0 %}
+                        {% endif %}
+
+                        {% for cat in categories %}
+                        {% if loop.index <= 2 %}
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="{{ url_for('static',filename='assets/images/features-first-icon.png') }}" alt="First One">
+                            </div>
+                            <div class="right-content">
+                                <a href="{{url_for('tuto', category=cat.category_id)}}"><h4>{{ cat.category_id }}</h4></a>
+                                <p>These images help healthcare professionals in diagnosing and treating various medical conditions.
+
+                                </p>
+                                <a href="{{url_for('tuto', category=cat.category_id)}}" class="text-button">Discover More</a>
+                            </div>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        {% for cat in categories %}
+                        {% if loop.index > 2 and loop.index <= 4 %}
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="{{ url_for('static',filename='assets/images/features-first-icon.png') }}" alt="fourth muscle">
+                            </div>
+                            <div class="right-content">
+                                <a href="{{url_for('tuto', category=cat.category_id)}}"><h4>{{ cat.category_id }}</h4></a>
+                                <p>These images help healthcare professionals in diagnosing and treating various medical conditions.                                </p>
+                                <a href="{{url_for('tuto', category=cat.category_id)}}" class="text-button">Discover More</a>
+                            </div>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Features Item End ***** -->
+
+    {% endblock %}

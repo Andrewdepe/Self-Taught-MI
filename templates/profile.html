@@ -1,0 +1,115 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section" id="features">
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+              <h2>Hola!! <em>{% print(session['user_fullname']) %}</em></h2>
+              <p>Email: {% print(session['user_name']) %}</p>
+              <h1>Quiz Score</h1>
+              <h3><a href="{{url_for('leaderboard')}}">Leaderboard</a></h3>
+
+    <table class="table table-stripe table-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Quiz Date & Time</th>
+                <th>Score</th>
+                <th>Session Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in score_list %}
+                <tr>
+                    <td>{{ row[5] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td><a href="{{url_for('profile',quiz_id=row[1])}}" class="btn btn-info btn-sm">View Details</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% if quiz_details:%}
+    <div class="trainer-item">
+      <div class="">
+        
+    <h3>QUIZ Details</h3>
+    <table class="table table-stripe table-sm table-sm table-bordered">
+      <thead>
+        <tr>
+          <th>SL</th>
+          <th>Question</th>
+          <th>Options</th>
+          <th>User Answer</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set options = ['option1', 'option2', 'option3', 'option4']        %}
+        {% for qa in quiz_details %}
+        <tr>
+          <td>{{loop.index}}</td>
+          <td> <span class="badge badge-info">{{qa.level}}</span>
+          {{qa.question}}</td>
+          <td>
+      
+            {% if qa.option1 == qa.answer %}
+              <span class="badge badge-success"> {{qa.option1}}</span>
+            {% else %}
+              <span class="badge badge-secondary"> {{qa.option1}}</span>
+            {% endif %}
+
+            {% if qa.option2 == qa.answer %}
+              <span class="badge badge-success"> {{qa.option2}}</span>
+            {% else %}
+              <span class="badge badge-secondary"> {{qa.option2}}</span>
+            {% endif %}
+
+            {% if qa.option3 == qa.answer %}
+              <span class="badge badge-success"> {{qa.option3}}</span>
+            {% else %}
+              <span class="badge badge-secondary"> {{qa.option3}}</span>
+            {% endif %}
+
+            {% if qa.option4 == qa.answer %}
+              <span class="badge badge-success"> {{qa.option4}}</span>
+            {% else %}
+              <span class="badge badge-secondary"> {{qa.option4}}</span>
+            {% endif %}
+
+          </td>
+          <td>
+            {% if qa.user_answer == qa.answer %}
+              <span class="badge badge-success"> {{qa.user_answer}}</span><br/>
+            {% else %}
+              <span class="badge badge-danger"> {{qa.user_answer}}</span><br/>
+            {% endif %}
+          </td>
+          <td>{{qa.mark_count}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+    {% endif %}
+              <h3>{% if session['user_type'] == 1 %}
+                <a href="/admin">Access to Admin Panel</a>
+                {% else %}
+                    User
+                {% endif %}
+              </h3>
+              <a href="/logout"><button class="btn btn-danger">
+             Logout
+            </button></a>
+          </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}
